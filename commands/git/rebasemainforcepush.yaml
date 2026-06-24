@@ -1,2 +1,11 @@
 name: rebasemainforcepush
-description: Fetch main, rebase current branch, then force push
+description: Fetch a branch, rebase current branch, then force push
+examples:
+  - p g rbfp
+  - poulpe git rebasemainforcepush --branch=mainline
+args:
+  - name: --branch
+    short: -b
+    required: false
+    help: Branch to rebase on
+    default: main

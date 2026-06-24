@@ -1,24 +1,26 @@
 #!/bin/bash
 
-git fetch origin main:main && git rebase main --autostash || exit 1
+BRANCH="${POULPE_BRANCH:-main}"
 
-commits_ahead=$(git rev-list --count main..HEAD 2>/dev/null)
+git fetch origin "$BRANCH":"$BRANCH" && git rebase "$BRANCH" --autostash || exit 1
+
+commits_ahead=$(git rev-list --count "$BRANCH"..HEAD 2>/dev/null)
 if [ "$commits_ahead" -gt 1 ] 2>/dev/null; then
   echo "=================================================="
-  echo "  WARNING: $commits_ahead commits ahead of main!"
+  echo "  WARNING: $commits_ahead commits ahead of $BRANCH!"
   echo "  You may want to squash before pushing."
   echo "=================================================="
   echo ""
-  git log --oneline main..HEAD
+  git log --oneline "$BRANCH"..HEAD
 fi
 
-commits_ahead=$(git rev-list --count main..HEAD 2>/dev/null)
+commits_ahead=$(git rev-list --count "$BRANCH"..HEAD 2>/dev/null)
 if [ "$commits_ahead" -eq 1 ] 2>/dev/null; then
   echo ""
-  echo "1 commit ahead of main:"
+  echo "1 commit ahead of $BRANCH:"
   git log --oneline -1 HEAD
 elif [ "$commits_ahead" -gt 1 ] 2>/dev/null; then
   echo ""
-  echo "$commits_ahead commits ahead of main:"
-  git log --oneline main..HEAD
+  echo "$commits_ahead commits ahead of $BRANCH:"
+  git log --oneline "$BRANCH"..HEAD
 fi

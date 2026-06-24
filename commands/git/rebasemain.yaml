@@ -1,2 +1,11 @@
 name: rebasemain
-description: Fetch main, rebase current branch on it
+description: Fetch a branch, rebase current branch on it
+examples:
+  - p g rb
+  - poulpe git rebasemain --branch=mainline
+args:
+  - name: --branch
+    short: -b
+    required: false
+    help: Branch to rebase on
+    default: main
