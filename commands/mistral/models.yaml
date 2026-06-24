@@ -1,0 +1,2 @@
+name: models
+description: List available Mistral models (requires MISTRAL_API_KEY in .env)

@@ -1,0 +1,34 @@
+name: bashcmd
+description: Example command showing all supported YAML fields
+examples:
+  - p ex bashcmd -t "Hello" -m mistral-small-latest
+  - poulpe example bashcmd --text "Hello" --model mistral-medium-latest --format yaml --tags a b
+
+args:
+  - name: --text
+    short: -t
+    required: true
+    help: The text
+
+  - name: --path
+    short: -o
+    required: false
+    help: Output file path
+
+  - name: --model
+    short: -m
+    required: true
+    help: Model name to use
+    choices: [mistral-small-latest, mistral-medium-latest]
+
+  - name: --format
+    short: -f
+    required: false
+    help: Output format
+    choices: [json, yaml, text]
+    default: json
+
+  - name: --tags
+    required: false
+    help: Tags to apply
+    nargs: "+"

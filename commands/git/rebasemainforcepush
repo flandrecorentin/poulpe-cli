@@ -1,0 +1,29 @@
+#!/bin/bash
+
+git fetch origin main:main && git rebase main --autostash || exit 1
+
+commits_ahead=$(git rev-list --count main..HEAD 2>/dev/null)
+if [ "$commits_ahead" -gt 1 ] 2>/dev/null; then
+  echo "=================================================="
+  echo "  WARNING: $commits_ahead commits ahead of main!"
+  echo "  You may want to squash before force pushing."
+  echo "=================================================="
+  echo ""
+  git log --oneline main..HEAD
+  echo ""
+  read -p "Continue with force push? [y/N] " answer
+  [[ "$answer" =~ ^[Yy]$ ]] || exit 1
+fi
+
+git push -f
+
+commits_ahead=$(git rev-list --count main..HEAD 2>/dev/null)
+if [ "$commits_ahead" -eq 1 ] 2>/dev/null; then
+  echo ""
+  echo "1 commit ahead of main:"
+  git log --oneline -1 HEAD
+elif [ "$commits_ahead" -gt 1 ] 2>/dev/null; then
+  echo ""
+  echo "$commits_ahead commits ahead of main:"
+  git log --oneline main..HEAD
+fi

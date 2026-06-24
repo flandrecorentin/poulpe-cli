@@ -1,0 +1,7 @@
+name: tagpush
+description: Create a tag and push it
+args:
+  - name: --tag
+    short: -t
+    required: true
+    help: Tag name to create and push

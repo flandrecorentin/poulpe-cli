@@ -1,0 +1,11 @@
+# Group aliases
+g: git
+k: kubectl
+m: mistral
+ex: example
+
+# git command aliases
+rb: rebasemain
+rbfp: rebasemainforcepush
+
+# kubectl aliases

@@ -1,0 +1,2 @@
+name: rebasemainforcepush
+description: Fetch main, rebase current branch, then force push

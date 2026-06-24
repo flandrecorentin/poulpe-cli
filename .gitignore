@@ -1,0 +1,8 @@
+.env
+.corentin.flandre
+corentin.flandre
+__pycache__/
+*.pyc
+.venv/
+dist/
+*.egg-info/

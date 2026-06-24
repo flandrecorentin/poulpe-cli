@@ -1,0 +1,9 @@
+#!/bin/bash
+
+if [ -z "$MISTRAL_API_KEY" ]; then
+  echo "Error: MISTRAL_API_KEY is not set. Add it to .env"
+  exit 1
+fi
+
+curl -s -H "Authorization: Bearer $MISTRAL_API_KEY" \
+  https://api.mistral.ai/v1/models | python3 -m json.tool

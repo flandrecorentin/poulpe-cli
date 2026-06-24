@@ -1,0 +1,3 @@
+#!/bin/bash
+
+git tag "$POULPE_TAG" && git push origin "$POULPE_TAG"

@@ -1,0 +1,13 @@
+[project]
+name = "poulpe-cli"
+version = "0.1.0"
+description = "Unified CLI hub for powerful custom commands"
+requires-python = ">=3.9"
+dependencies = ["pyyaml>=6.0"]
+
+[project.scripts]
+poulpe = "poulpe.cli:main"
+
+[build-system]
+requires = ["setuptools>=64"]
+build-backend = "setuptools.backends._legacy:_Backend"

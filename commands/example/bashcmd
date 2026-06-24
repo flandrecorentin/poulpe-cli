@@ -1,0 +1,28 @@
+#!/bin/bash
+
+if [ -n "$POULPE_PATH" ]; then
+  echo "Sending \"$POULPE_TEXT\" to model $POULPE_MODEL (storing the result in $POULPE_PATH)"
+else
+  echo "Sending \"$POULPE_TEXT\" to model $POULPE_MODEL"
+fi
+
+for i in 1 2 3 4 5; do
+  sleep 0.4
+  printf ". "
+done
+echo ""
+
+echo "Mocking a completion call:"
+echo ""
+
+FORMAT="${POULPE_FORMAT:-json}"
+case "$FORMAT" in
+  json) printf '{\n  "input": "%s",\n  "output": "mocked answer"\n}\n' "$POULPE_TEXT";;
+  yaml) printf 'input: "%s"\noutput: "mocked answer"\n' "$POULPE_TEXT";;
+  text) printf "Input: %s\nOutput: Mocked Answer\n" "$POULPE_TEXT";;
+esac
+
+if [ -n "$POULPE_TAGS" ]; then
+  echo ""
+  echo "tags: $POULPE_TAGS"
+fi
