@@ -5,6 +5,7 @@ m: mistral
 ex: example
 
 # git command aliases
+bf: branchfeature
 ca: commitammend
 rb: rebasemain
 rbfp: rebasemainforcepush
