@@ -1,0 +1,10 @@
+name: branchfeature
+description: Create a new feature branch from an up-to-date main
+examples:
+  - poulpe git branchfeature --branch-name=my-feature
+  - p g bf -b my-feature
+args:
+  - name: --branch-name
+    short: -b
+    required: true
+    help: Name of the new feature branch
